@@ -27,6 +27,17 @@ public class Util {
         return numero;
     }
 
+    public static double pedirDouble(Scanner scanner, String mensaje) {
+        System.out.println(mensaje);
+        while (!scanner.hasNextDouble()) {
+            System.out.println("Entrada invalida. " + mensaje);
+            scanner.next(); // Limpiar la entrada invalida
+        }
+        double numero = scanner.nextDouble();
+        scanner.nextLine(); // Limpiar el buffer
+        return numero;
+    }
+
     public static String pedirTexto(Scanner scanner, String mensaje) {
         System.out.println(mensaje);
         return scanner.nextLine();

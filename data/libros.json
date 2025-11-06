@@ -1,0 +1,23 @@
+[
+  {
+    "isbn": "1",
+    "titulo": "1",
+    "autor": "1",
+    "anio": 2025,
+    "precio": 1.0
+  },
+  {
+    "isbn": "57384957",
+    "titulo": "23948",
+    "autor": "23498",
+    "anio": 2025,
+    "precio": 23948.0
+  },
+  {
+    "isbn": "23894ufsdi",
+    "titulo": "234",
+    "autor": "234",
+    "anio": 2025,
+    "precio": 235.0
+  }
+]

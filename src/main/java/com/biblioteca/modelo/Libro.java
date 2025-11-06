@@ -1,4 +1,4 @@
-package com.biblioteca;
+package com.biblioteca.modelo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,10 +14,10 @@ public class Libro implements Serializable {
     private String isbn;
     private String titulo;
     private String autor;
-    private LocalDate anio;
+    private int anio;
     private double precio;
 
-    public Libro(String isbn, String titulo, String autor, LocalDate anio, double precio) {
+    public Libro(String isbn, String titulo, String autor, int anio, double precio) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
@@ -49,11 +49,11 @@ public class Libro implements Serializable {
         this.autor = autor;
     }
 
-    public LocalDate getAnio() {
+    public int getAnio() {
         return anio;
     }
 
-    public void setAnio(LocalDate anio) {
+    public void setAnio(int anio) {
         this.anio = anio;
     }
 
@@ -63,27 +63,6 @@ public class Libro implements Serializable {
 
     public void setPrecio(double precio) {
         this.precio = precio;
-    }
-
-    public static void guardarLibros(Biblioteca b) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("libros.dat"))) {
-            oos.writeObject(b.getLibros());
-            System.out.println("Biblioteca guardada correctamente.");
-        } catch (IOException e) {
-            System.err.println("Error guardando biblioteca: " + e.getMessage());
-        }
-    }
-
-    public static ArrayList<Libro> cargarLibros() {
-        ArrayList<Libro> lista = new ArrayList<>();
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("libros.dat"))) {
-            lista = (ArrayList<Libro>) ois.readObject();
-        } catch (FileNotFoundException e) {
-            // Si no existe el archivo, se devuelve lista vacía
-        } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Error leyendo biblioteca: " + e.getMessage());
-        }
-        return lista;
     }
 
     @Override
