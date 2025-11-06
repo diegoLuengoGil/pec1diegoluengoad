@@ -12,13 +12,20 @@ import java.util.Scanner;
 
 import com.biblioteca.Util;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlTransient;
+
+@XmlRootElement(name = "biblioteca")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Biblioteca {
 
-    private ArrayList<Libro> libros;
+    @XmlElement(name = "libro")
+    private ArrayList<Libro> libros = new ArrayList<>();
 
-    public Biblioteca() {
-        this.libros = new ArrayList<>();
-    }
+    public Biblioteca() { }
 
     public Biblioteca(ArrayList<Libro> libros) {
         this.libros = libros;

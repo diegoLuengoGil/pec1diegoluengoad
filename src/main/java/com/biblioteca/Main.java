@@ -7,19 +7,19 @@ import java.util.Scanner;
 import com.biblioteca.json.GestorJSON;
 import com.biblioteca.modelo.Biblioteca;
 import com.biblioteca.modelo.Libro;
+import com.biblioteca.xml.ConsultasXPath;
+import com.biblioteca.xml.GestorXML;
 
 public class Main {
 
     private static void anadirLibro(Scanner scanner, Biblioteca biblioteca) {
         // Pedir datos del libro
-        System.out.print("ISBN: ");
-        String isbn = Util.pedirTexto(scanner, "");
-        System.out.print("Título: ");
-        String titulo = Util.pedirTexto(scanner, "");
-        System.out.print("Autor: ");
-        String autor = Util.pedirTexto(scanner, "");
+        String isbn = Util.pedirTexto(scanner, "ISBN: ");
+        String titulo = Util.pedirTexto(scanner, "Título: ");
+        String autor = Util.pedirTexto(scanner, "Autor: ");
         double precio = Util.pedirDouble(scanner, "Precio: ");
-        int anio = LocalDate.now().getYear();
+
+        int anio = Util.pedirNumeroEnRango(scanner, "Año de publicación: ", 0, 2100);
 
         Libro libro = new Libro(isbn, titulo, autor, anio, precio);
         biblioteca.agregarLibro(libro);
@@ -66,16 +66,11 @@ public class Main {
             switch (opcion) {
                 case 1 -> GestorJSON.exportarJSON(biblioteca.getLibros());
                 case 2 -> biblioteca.setLibros((GestorJSON.importarJSON()));
-                case 3 -> System.out.println("prueba");// convertirJSONaXML();
+                case 3 -> GestorXML.convertirJSONaXML();
                 case 4 -> menuActivo = false;
                 default -> System.out.println("Opción no válida.");
             }
         } while (menuActivo);
-    }
-
-    private static void consultasXML() {
-        System.out.println("Función consultas XML llamada.");
-        // Aquí irían las consultas XPath
     }
 
     public static void menu() {
@@ -107,7 +102,7 @@ public class Main {
             switch (opcion) {
                 case 1 -> gestionarLibros(biblioteca);
                 case 2 -> manejoDatosMenu(scanner, biblioteca);
-                case 3 -> consultasXML();
+                case 3 -> ConsultasXPath.consultasXML(scanner);
                 case 4 -> menuActivo = false;
                 default -> System.out.println("Opción no válida.");
             }

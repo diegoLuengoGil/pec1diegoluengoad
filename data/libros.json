@@ -1,23 +1,58 @@
 [
   {
-    "isbn": "1",
-    "titulo": "1",
-    "autor": "1",
-    "anio": 2025,
-    "precio": 1.0
+    "isbn": "978-84-376-0494-7",
+    "titulo": "Cien años de soledad",
+    "autor": "Gabriel García Márquez",
+    "anio": 1967,
+    "precio": 19.95
   },
   {
-    "isbn": "57384957",
-    "titulo": "23948",
-    "autor": "23498",
-    "anio": 2025,
-    "precio": 23948.0
+    "isbn": "978-84-204-8659-2",
+    "titulo": "El nombre del viento",
+    "autor": "Patrick Rothfuss",
+    "anio": 2007,
+    "precio": 23.50
   },
   {
-    "isbn": "23894ufsdi",
-    "titulo": "234",
-    "autor": "234",
-    "anio": 2025,
-    "precio": 235.0
+    "isbn": "978-84-450-7382-7",
+    "titulo": "Sapiens: De animales a dioses",
+    "autor": "Yuval Noah Harari",
+    "anio": 2011,
+    "precio": 21.00
+  },
+  {
+    "isbn": "978-84-670-5455-6",
+    "titulo": "La sombra del viento",
+    "autor": "Carlos Ruiz Zafón",
+    "anio": 2001,
+    "precio": 18.75
+  },
+  {
+    "isbn": "978-84-08-12412-1",
+    "titulo": "El alquimista",
+    "autor": "Paulo Coelho",
+    "anio": 1988,
+    "precio": 14.99
+  },
+  {
+    "isbn": "978-84-253-5400-3",
+    "titulo": "1984",
+    "autor": "George Orwell",
+    "anio": 1949,
+    "precio": 12.50
+  },
+  {
+    "isbn": "978-84-663-6714-4",
+    "titulo": "Los pilares de la Tierra",
+    "autor": "Ken Follett",
+    "anio": 1989,
+    "precio": 24.95
+  },
+  {
+    "isbn": "978-84-397-3228-3",
+    "titulo": "Don Quijote de la Mancha",
+    "autor": "Miguel de Cervantes",
+    "anio": 1605,
+    "precio": 16.90
   }
 ]

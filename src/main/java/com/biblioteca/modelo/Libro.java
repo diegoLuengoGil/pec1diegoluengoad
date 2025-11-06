@@ -1,21 +1,30 @@
 package com.biblioteca.modelo;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlTransient;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Libro implements Serializable {
+    @XmlAttribute(name = "isbn")
     private String isbn;
+    @XmlElement(name = "titulo")
     private String titulo;
+    @XmlElement(name = "autor")
     private String autor;
+    @XmlElement(name = "anio")
     private int anio;
+    @XmlElement(name = "precio")
     private double precio;
+
+    @XmlTransient
+    private static final long serialVersionUID = 1L;
+
+    public Libro() {}
 
     public Libro(String isbn, String titulo, String autor, int anio, double precio) {
         this.isbn = isbn;
