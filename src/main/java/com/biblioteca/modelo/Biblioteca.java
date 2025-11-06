@@ -18,35 +18,73 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlTransient;
 
+/**
+ * Clase que representa una biblioteca que contiene una lista de libros.
+ */
 @XmlRootElement(name = "biblioteca")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Biblioteca {
 
+    /**
+     * Lista de libros en la biblioteca.
+     */
     @XmlElement(name = "libro")
     private ArrayList<Libro> libros = new ArrayList<>();
 
-    public Biblioteca() { }
+    /**
+     * Constructor de la clase Biblioteca.
+     */
+    public Biblioteca() {
+    }
 
+    /**
+     * Constructor de la clase Biblioteca con una lista de libros.
+     * 
+     * @param libros Lista de libros para inicializar la biblioteca.
+     */
     public Biblioteca(ArrayList<Libro> libros) {
         this.libros = libros;
     }
 
+    /**
+     * Obtiene la lista de libros en la biblioteca.
+     * 
+     * @return Lista de libros en la biblioteca.
+     */
     public ArrayList<Libro> getLibros() {
         return libros;
     }
 
+    /**
+     * Establece la lista de libros en la biblioteca.
+     * 
+     * @param libros Lista de libros para establecer en la biblioteca.
+     */
     public void setLibros(ArrayList<Libro> libros) {
         this.libros = libros;
     }
 
+    /**
+     * Agrega un libro a la biblioteca.
+     * 
+     * @param libro Libro a agregar a la biblioteca.
+     */
     public void agregarLibro(Libro libro) {
         this.libros.add(libro);
     }
 
+    /**
+     * Contar la cantidad de libros en la biblioteca.
+     * 
+     * @return Cantidad de libros en la biblioteca.
+     */
     public int contarLibros() {
         return this.libros.size();
     }
 
+    /**
+     * Muestra todos los libros en la biblioteca en formato tabular.
+     */
     public void mostrarLibros() {
         if (libros.isEmpty()) {
             System.out.println("No hay libros en la biblioteca.");
@@ -72,6 +110,12 @@ public class Biblioteca {
         }
     }
 
+    /**
+     * Elimina un libro de la biblioteca por su ISBN.
+     * 
+     * @param isbn ISBN del libro a eliminar.
+     * @return true si el libro fue eliminado, false si no se encontró.
+     */
     private boolean eliminarLibroPorISBN(String isbn) {
         boolean eliminado = false;
         for (int i = 0; i < libros.size(); i++) {
@@ -83,6 +127,12 @@ public class Biblioteca {
         return eliminado;
     }
 
+    /**
+     * Elimina un libro de la biblioteca por su título.
+     * 
+     * @param titulo Título del libro a eliminar.
+     * @return true si el libro fue eliminado, false si no se encontró.
+     */
     private boolean eliminarLibroPorTitulo(String titulo) {
         boolean eliminado = false;
         for (int i = 0; i < libros.size(); i++) {
@@ -94,6 +144,11 @@ public class Biblioteca {
         return eliminado;
     }
 
+    /**
+     * Muestra el menú para eliminar un libro.
+     * 
+     * @param scanner objeto Scanner que se utiliza para leer la entrada.
+     */
     public void menuEliminarLibro(Scanner scanner) {
         boolean menuActivo = true;
 
@@ -131,6 +186,9 @@ public class Biblioteca {
         } while (menuActivo);
     }
 
+    /**
+     * Guarda la biblioteca en un archivo de objetos.
+     */
     public void guardarLibros() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("libros.dat"))) {
             oos.writeObject(getLibros());
@@ -140,6 +198,11 @@ public class Biblioteca {
         }
     }
 
+    /**
+     * Carga la biblioteca desde un archivo de objetos.
+     * 
+     * @return Lista de libros cargados desde el archivo.
+     */
     public static ArrayList<Libro> cargarLibros() {
         ArrayList<Libro> lista = new ArrayList<>();
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("libros.dat"))) {

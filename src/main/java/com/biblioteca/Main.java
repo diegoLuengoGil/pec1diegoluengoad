@@ -10,8 +10,20 @@ import com.biblioteca.modelo.Libro;
 import com.biblioteca.xml.ConsultasXPath;
 import com.biblioteca.xml.GestorXML;
 
+/**
+ * Clase principal de la aplicacin Biblioteca.
+ * 
+ * @author Diego Luengo Gil
+ */
 public class Main {
 
+
+    /**
+     * Añade un libro a la biblioteca.
+     * 
+     * @param scanner objeto Scanner que se utiliza para leer la entrada.
+     * @param biblioteca objeto Biblioteca que se utiliza para almacenar el libro.
+     */
     private static void anadirLibro(Scanner scanner, Biblioteca biblioteca) {
         // Pedir datos del libro
         String isbn = Util.pedirTexto(scanner, "ISBN: ");
@@ -26,7 +38,12 @@ public class Main {
         System.out.println("Libro añadido correctamente.");
     }
 
-    // Métodos a implementar según funcionalidad
+
+    /**
+     * Muestra el menú para gestionar libros en la biblioteca.
+     * 
+     * @param biblioteca objeto Biblioteca que se utiliza para almacenar los libros.
+     */
     private static void gestionarLibros(Biblioteca biblioteca) {
         boolean menuActivo = true;
         Scanner scanner = new Scanner(System.in);
@@ -51,6 +68,12 @@ public class Main {
 
     }
 
+    /**
+     * Muestra el menú para manejar los datos de la biblioteca.
+     * 
+     * @param scanner objeto Scanner que se utiliza para leer la entrada.
+     * @param biblioteca objeto Biblioteca que se utiliza para almacenar los libros.
+     */
     private static void manejoDatosMenu(Scanner scanner, Biblioteca biblioteca) {
         boolean menuActivo = true;
 
@@ -73,6 +96,9 @@ public class Main {
         } while (menuActivo);
     }
 
+    /**
+     * Muestra el menú principal de la aplicacin Biblioteca.
+     */
     public static void menu() {
         Biblioteca biblioteca;
         Scanner scanner = new Scanner(System.in);
@@ -109,6 +135,7 @@ public class Main {
         } while (menuActivo);
         biblioteca.guardarLibros();
     }
+
 
     public static void main(String[] args) {
         menu();

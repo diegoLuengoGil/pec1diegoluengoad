@@ -15,16 +15,32 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 
+/**
+ * Clase para gestionar la conversión de JSON a XML y obtener la ruta del archivo XML.
+ */
 public class GestorXML {
 
+    /**
+     * Obtiene la ruta del archivo XML.
+     * 
+     * @return La ruta del archivo XML.
+     */
     public static Path getRutaXML() {
         return (getCarpetaXML().resolve("libros.xml"));
     }
 
+    /**
+     * Obtiene la ruta de la carpeta donde se almacenará el archivo XML.
+     * 
+     * @return La ruta de la carpeta XML.
+     */
     private static Path getCarpetaXML() {
         return Path.of("data");
     }
 
+    /**
+     * Convierte los datos de la biblioteca desde JSON a XML.
+     */
     public static void convertirJSONaXML() {
         Util.crearCarpetaSiNoExiste(getCarpetaXML());
 
