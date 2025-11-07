@@ -17,11 +17,10 @@ import com.biblioteca.xml.GestorXML;
  */
 public class Main {
 
-
     /**
      * Añade un libro a la biblioteca.
      * 
-     * @param scanner objeto Scanner que se utiliza para leer la entrada.
+     * @param scanner    objeto Scanner que se utiliza para leer la entrada.
      * @param biblioteca objeto Biblioteca que se utiliza para almacenar el libro.
      */
     private static void anadirLibro(Scanner scanner, Biblioteca biblioteca) {
@@ -37,7 +36,6 @@ public class Main {
         biblioteca.agregarLibro(libro);
         System.out.println("Libro añadido correctamente.");
     }
-
 
     /**
      * Muestra el menú para gestionar libros en la biblioteca.
@@ -71,7 +69,7 @@ public class Main {
     /**
      * Muestra el menú para manejar los datos de la biblioteca.
      * 
-     * @param scanner objeto Scanner que se utiliza para leer la entrada.
+     * @param scanner    objeto Scanner que se utiliza para leer la entrada.
      * @param biblioteca objeto Biblioteca que se utiliza para almacenar los libros.
      */
     private static void manejoDatosMenu(Scanner scanner, Biblioteca biblioteca) {
@@ -97,7 +95,7 @@ public class Main {
     }
 
     /**
-     * Muestra el menú principal de la aplicacin Biblioteca.
+     * Muestra el menú principal de la aplicacion Biblioteca.
      */
     public static void menu() {
         Biblioteca biblioteca;
@@ -106,11 +104,9 @@ public class Main {
 
         ArrayList<Libro> listaCargada = Biblioteca.cargarLibros();
         if (listaCargada.isEmpty()) {
-            // No hay libros, usamos constructor vacío
             biblioteca = new Biblioteca();
             System.out.println("No se encontraron libros guardados. Se ha creado una biblioteca nueva.");
         } else {
-            // Hay libros, inicializamos la biblioteca con ellos
             biblioteca = new Biblioteca(listaCargada);
             System.out.println("Se han cargado " + listaCargada.size() + " libros de la biblioteca.");
         }
@@ -120,7 +116,7 @@ public class Main {
             System.out.println("\n=== MENÚ PRINCIPAL ===");
             System.out.println("1. Gestionar libros");
             System.out.println("2. Manejo de datos");
-            System.out.println("3. Consultas sobre XML");
+            System.out.println("3. Consultas XPath");
             System.out.println("4. Salir");
 
             int opcion = Util.pedirNumeroEnRango(scanner, "Seleccione una opción: ", 1, 4);
@@ -135,7 +131,6 @@ public class Main {
         } while (menuActivo);
         biblioteca.guardarLibros();
     }
-
 
     public static void main(String[] args) {
         menu();

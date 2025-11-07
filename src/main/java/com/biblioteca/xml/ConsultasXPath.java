@@ -44,6 +44,7 @@ public class ConsultasXPath {
 
     /**
      * Muestra los autores que contienen una palabra clave.
+     * 
      * @param palabra Palabra clave a buscar en los nombres de los autores.
      */
     public static void autoresConPalabraClave(String palabra) {
@@ -118,19 +119,22 @@ public class ConsultasXPath {
 
                     for (int i = 0; i < nodos.getLength(); i++) {
                         var hijos = nodos.item(i).getChildNodes();
-                        String titulo = "", autor = "", anio = "", precio = "";
+                        String titulo = "";
+                        String autor = "";
+                        String anio = "";
+                        String precio = "";
 
                         for (int j = 0; j < hijos.getLength(); j++) {
-                            var nodo = hijos.item(j);
-                            if (nodo.getNodeType() != org.w3c.dom.Node.ELEMENT_NODE)
-                                continue;
+                            String nodo = hijos.item(j).getNodeName();
+                            String valor = hijos.item(j).getTextContent();
 
-                            switch (nodo.getNodeName()) {
-                                case "titulo" -> titulo = nodo.getTextContent();
-                                case "autor" -> autor = nodo.getTextContent();
-                                case "anio" -> anio = nodo.getTextContent();
-                                case "precio" -> precio = nodo.getTextContent();
+                            switch (nodo) {
+                                case "titulo" -> titulo = valor;
+                                case "autor" -> autor = valor;
+                                case "anio" -> anio = valor;
+                                case "precio" -> precio = valor;
                             }
+
                         }
 
                         System.out.printf("%-30s %-25s %-6s %-8s%n", titulo, autor, anio, precio);
@@ -146,6 +150,7 @@ public class ConsultasXPath {
 
     /**
      * Muestra el menú de consultas por precio.
+     * 
      * @param scanner Objeto Scanner para leer la entrada del usuario.
      */
     private static void menuConsultasPorPrecio(Scanner scanner) {
@@ -182,6 +187,7 @@ public class ConsultasXPath {
 
     /**
      * Muestra el menú de consultas por año.
+     * 
      * @param scanner Objeto Scanner para leer la entrada del usuario.
      */
     private static void menuConsultasPorAnio(Scanner scanner) {
@@ -218,6 +224,7 @@ public class ConsultasXPath {
 
     /**
      * Muestra el menú principal de consultas XPath.
+     * 
      * @param scanner Objeto Scanner para leer la entrada del usuario.
      */
     public static void consultasXML(Scanner scanner) {
