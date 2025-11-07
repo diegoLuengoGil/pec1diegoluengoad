@@ -86,7 +86,7 @@ public class Util {
                 Files.createDirectories(path);
             }
         } catch (IOException e) {
-            System.err.println("Error creando la carpeta 'data': " + e.getMessage());
+            System.out.println("Error creando la carpeta 'data': " + e.getMessage());
         }
     }
 
@@ -102,7 +102,7 @@ public class Util {
                 Files.createDirectories(path);
             }
         } catch (IOException e) {
-            System.err.println("Error creando la carpeta 'data': " + e.getMessage());
+            System.out.println("Error creando la carpeta 'data': " + e.getMessage());
         }
     }
 }

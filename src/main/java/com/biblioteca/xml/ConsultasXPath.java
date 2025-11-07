@@ -16,71 +16,6 @@ import com.biblioteca.Util;
 public class ConsultasXPath {
 
     /**
-     * Muestra los libros posteriores a un año determinado.
-     * 
-     * @param anio Año de referencia.
-     */
-    public static void librosPosterioresA(int anio) {
-        ejecutarConsulta("//libro[anio > " + anio + "]");
-    }
-
-    /**
-     * Muestra los libros anteriores a un año determinado.
-     * 
-     * @param anio Año de referencia.
-     */
-    public static void librosAnterioresA(int anio) {
-        ejecutarConsulta("//libro[anio < " + anio + "]");
-    }
-
-    /**
-     * Muestra los libros del año determinado.
-     * 
-     * @param anio Año de referencia.
-     */
-    public static void librosDelAnio(int anio) {
-        ejecutarConsulta("//libro[anio = " + anio + "]");
-    }
-
-    /**
-     * Muestra los autores que contienen una palabra clave.
-     * 
-     * @param palabra Palabra clave a buscar en los nombres de los autores.
-     */
-    public static void autoresConPalabraClave(String palabra) {
-        ejecutarConsulta(
-                "//libro[contains(translate(autor,'ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÜÑ','abcdefghijklmnopqrstuvwxyzáéíóúüñ'),'"
-                        + palabra.toLowerCase() + "')]");
-    }
-
-    /**
-     * Muestra los libros con precio mayor al valor especificado.
-     * 
-     * @param precio Valor de referencia.
-     */
-    public static void librosConPrecioMayorA(double precio) {
-        ejecutarConsulta("//libro[precio > " + precio + "]");
-    }
-
-    /**
-     * Muestra los libros con precio menor al valor especificado.
-     * 
-     * @param precio Valor de referencia.
-     */
-    public static void librosConPrecioMenorA(double precio) {
-        ejecutarConsulta("//libro[precio < " + precio + "]");
-    }
-
-    /**
-     * Muestra los libros con precio igual al valor especificado.
-     * 
-     * @param precio Valor de referencia.
-     */
-    public static void librosConPrecioIgualA(double precio) {
-        ejecutarConsulta("//libro[precio = " + precio + "]");
-    }
-
-    /**
      * Ejecuta una consulta XPath y muestra los resultados.
      * 
      * @param expresionXPath Expresión XPath a evaluar.
@@ -89,7 +24,7 @@ public class ConsultasXPath {
         try {
             File xmlFile = GestorXML.getRutaXML().toFile();
             if (!xmlFile.exists()) {
-                System.err.println("No se encontró el archivo XML en " + GestorXML.getRutaXML().toString());
+                System.out.println("No se encontró el archivo XML en " + GestorXML.getRutaXML().toString());
             } else {
 
                 // DocumentBuilderFactory crea el analizador DOM.
@@ -144,7 +79,7 @@ public class ConsultasXPath {
             }
 
         } catch (Exception e) {
-            System.err.println("Error ejecutando la consulta XPath: " + e.getMessage());
+            System.out.println("Error ejecutando la consulta XPath: " + e.getMessage());
         }
     }
 
@@ -170,15 +105,15 @@ public class ConsultasXPath {
             switch (opcion) {
                 case 1 -> {
                     precio = Util.pedirDouble(scanner, "Introduzca el precio: ");
-                    librosConPrecioMayorA(precio);
+                    ejecutarConsulta("//libro[precio > " + precio + "]");
                 }
                 case 2 -> {
                     precio = Util.pedirDouble(scanner, "Introduzca el precio: ");
-                    librosConPrecioMenorA(precio);
+                    ejecutarConsulta("//libro[precio < " + precio + "]");
                 }
                 case 3 -> {
                     precio = Util.pedirDouble(scanner, "Introduzca el precio: ");
-                    librosConPrecioIgualA(precio);
+                    ejecutarConsulta("//libro[precio = " + precio + "]");
                 }
                 case 4 -> menuActivo = false;
             }
@@ -207,15 +142,15 @@ public class ConsultasXPath {
             switch (opcion) {
                 case 1 -> {
                     anio = Util.pedirNumero(scanner, "Introduzca el año: ");
-                    librosPosterioresA(anio);
+                    ejecutarConsulta("//libro[anio > " + anio + "]");
                 }
                 case 2 -> {
                     anio = Util.pedirNumero(scanner, "Introduzca el año: ");
-                    librosAnterioresA(anio);
+                    ejecutarConsulta("//libro[anio < " + anio + "]");
                 }
                 case 3 -> {
                     anio = Util.pedirNumero(scanner, "Introduzca el año: ");
-                    librosDelAnio(anio);
+                    ejecutarConsulta("//libro[anio = " + anio + "]");
                 }
                 case 4 -> menuActivo = false;
             }
@@ -244,7 +179,9 @@ public class ConsultasXPath {
                 case 2 -> {
                     System.out.print("Introduzca palabra clave para buscar en autores: ");
                     String palabra = scanner.nextLine().trim();
-                    autoresConPalabraClave(palabra);
+                    ejecutarConsulta(
+                            "//libro[contains(translate(autor,'ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÜÑ','abcdefghijklmnopqrstuvwxyzáéíóúüñ'),'"
+                                    + palabra.toLowerCase() + "')]");
                 }
                 case 3 -> menuConsultasPorPrecio(scanner);
                 case 4 -> menuActivo = false;

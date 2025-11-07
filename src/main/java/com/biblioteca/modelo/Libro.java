@@ -152,20 +152,4 @@ public class Libro implements Serializable {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-
-    
-    /**
-     * Representación en cadena del libro.
-     * @return Cadena con los detalles del libro.
-     */
-    @Override
-    public String toString() {
-        return "Libro{" +
-                "isbn='" + isbn + '\'' +
-                ", titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
-                ", anio=" + anio + // Aquí mostrará el formato ISO (aaaa-MM-dd)
-                ", precio=" + precio +
-                '}';
-    }
 }

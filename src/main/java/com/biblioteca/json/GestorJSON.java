@@ -4,14 +4,16 @@ import com.biblioteca.Util;
 import com.biblioteca.modelo.Libro;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+
+import java.lang.reflect.Type;
 
 /**
  * Clase para gestionar la importación y exportación de datos en formato JSON.
@@ -49,7 +51,7 @@ public class GestorJSON {
             gson.toJson(libros, writer);
             System.out.println("Exportación a JSON realizada correctamente.");
         } catch (IOException e) {
-            System.err.println("Error exportando a JSON: " + e.getMessage());
+            System.out.println("Error exportando a JSON: " + e.getMessage());
         }
     }
 
@@ -63,17 +65,13 @@ public class GestorJSON {
         Util.crearCarpetaSiNoExiste(getCarpetaJSON()); // Se asegura que la carpeta exista
         ArrayList<Libro> listaLibros = new ArrayList<>(); // Inicializamos lista vacía
         Gson gson = new Gson();
+        Type librosArray = new TypeToken<List<Libro>>(){}.getType();
 
         try (FileReader reader = new FileReader(ubicacionJSON.toFile())) {
-            Libro[] librosArray = gson.fromJson(reader, Libro[].class);
-            if (librosArray != null) { // Evita NullPointer si el JSON está vacío
-                for (Libro l : librosArray) {
-                    listaLibros.add(l);
-                }
-            }
+            listaLibros = gson.fromJson(reader, librosArray);
             System.out.println("Importación desde JSON realizada correctamente.");
         } catch (IOException e) {
-            System.err.println("Error importando desde JSON: " + e.getMessage());
+            System.out.println("Error importando desde JSON: " + e.getMessage());
         }
 
         return listaLibros;

@@ -193,7 +193,7 @@ public class Biblioteca {
             oos.writeObject(getLibros());
             System.out.println("Biblioteca guardada correctamente.");
         } catch (IOException e) {
-            System.err.println("Error guardando biblioteca: " + e.getMessage());
+            System.out.println("Error guardando biblioteca: " + e.getMessage());
         }
     }
 
@@ -209,7 +209,7 @@ public class Biblioteca {
         } catch (FileNotFoundException e) {
             System.out.println("No se encontró el archivo de biblioteca. Se creará uno nuevo al guardar.");
         } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Error leyendo biblioteca: " + e.getMessage());
+            System.out.println("Error leyendo biblioteca: " + e.getMessage());
         }
         return lista;
     }
